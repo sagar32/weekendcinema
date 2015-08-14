@@ -1,0 +1,70 @@
+
+body {
+	font-family: calibri;
+	font-size: 16px;
+	/*background-color :#feeb3b;*/
+}
+
+hr{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px dashed #ff9800;
+
+}
+
+.color0{
+ background-color: #8d38c9;
+}
+.color1{
+ background-color: #3f51b5;
+}
+.color2{
+ background-color: #2196f3;	
+}
+.color3{
+ background-color: #4caf50;	
+}
+.color4{
+ background-color: #feeb3b;	
+}
+.color5{
+ background-color: #ff9800;	
+}
+.color6{
+ background-color: #f44336;	
+}
+
+.container{
+	padding-top: 5px;
+}
+
+
+.news {
+	height: 400px;
+}
+
+.windows{
+	height: 400px;
+}
+
+
+.verticalLine {
+	border-left:2px dashed blue;"
+}
+
+
+.fa-color {
+	color: #3f51b5;
+}
+
+.all-border{
+border: 1px dashed #ff9800;
+}
+
+.smallWindow{
+	height: 200px
+}
+
+.smallWindow75 {
+	height: 100px
+}

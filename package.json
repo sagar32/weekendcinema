@@ -1,0 +1,27 @@
+
+{
+  "name": "module-name",
+  "version": "1.0.0",
+  "description": "Weekend Cinema UI",
+  "author": "Ganesh Karamala",
+  "contributors": [{
+  "name": "",
+  "email": ""
+}],
+  "main": "app.js",
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "dependencies": {
+    "express": "~4.x",
+	"consolidate": "~0.9.1",
+	"swig": "~0.14.0"
+  },
+  "preferGlobal": true,
+  "private": true,
+  "publishConfig": {
+  "registry": ""
+},
+  "license": "unlicensed"
+}
