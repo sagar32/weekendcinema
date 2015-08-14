@@ -4,7 +4,7 @@ var express = require('express')
 
   var path    = require("path");
   
-var port = process.env.NODE_ENV || 3000;
+var port = process.env.PORT || 3000;
 
 
 app.set("view options", {layout: false});
