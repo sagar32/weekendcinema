@@ -13,6 +13,13 @@ myModule.controller("homeCtrl",function($scope){
 		showNewsLinks : true,
 		showLinkContent:false
 	};
+	
+    $scope.showOrHideNews = function(number){
+
+		$scope.pageData.showNewsLinks = !$scope.pageData.showNewsLinks;
+        $scope.pageData.showLinkContent = !$scope.pageData.showLinkContent;
+        $scope.pageData.clickedLink = number;
+	}
 
 	$scope.changeLanguage = function(){
 
@@ -23,7 +30,7 @@ myModule.controller("homeCtrl",function($scope){
 			$scope.pageData.cinemaTitle ='సినిమా' ;
 		}
 		else{
-			$scope.pageData =  	{
+			 $scope.pageData =  	{
 				currentDate : new Date(),
 				homeTitle :'Home',
 				cinemaTitle:'Cinema',
