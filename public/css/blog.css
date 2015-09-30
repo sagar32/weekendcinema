@@ -4,6 +4,7 @@
 
  body {
   font-family: calibri;
+  background-color:#e9eaed ;
   color: #555;
 }
 
@@ -31,6 +32,8 @@ h6, .h6 {
 }
 
 
+
+
 /*
  * Masthead for nav
  */
@@ -46,7 +49,10 @@ h6, .h6 {
   display: inline-block;
   padding: 10px;
   font-weight: 500;
-  color: #cdddeb;
+  color: #fff;
+  font-family: calibri;
+  /*text-transform: uppercase;*/
+  font-size:18px;
 }
 .blog-nav-item:hover,
 .blog-nav-item:focus {
@@ -172,6 +178,59 @@ h6, .h6 {
 .blog-masthead .container{
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.bg-color0{
+ background-color: #8d38c9;
+}
+.bg-color1{
+ background-color: #3f51b5;
+}
+.bg-color2{
+ background-color: #2196f3;	
+}
+.bg-color3{
+ background-color: #4caf50;	
+}
+.bg-color4{
+ background-color: #feeb3b;	
+}
+.bg-color5{
+ background-color: #ff9800;	
+}
+.bg-color6{
+ background-color: #f44336;	
+}
+
+
+.color0{
+color: #8d38c9;
+}
+.color1{
+color: #3f51b5;
+}
+.color2{
+color: #2196f3;	
+}
+.color3{
+color: #4caf50;	
+}
+.color4{
+color: #feeb3b;	
+}
+.color5{
+color: #ff9800;	
+}
+.color6{
+color: #f44336;	
+}
+
+.body-template {
+   padding: 0px 10px 0px 10px ;
+}
+
+.img-responsive{
+	max-height:100px;
 }
 
 

@@ -1,0 +1,31 @@
+		<div class="container">
+		<div class="row" ng-show="showNewsItems">
+		      <div class="slider-header">
+			    <h3>News Today</h3>
+			  </div>
+		     <div ng-show="showNewsLinks">
+			  <div class="col-md-3 col-xs-6 image-box" ng-repeat="number in cnews">
+			    <a href="" ng-click="showOrHideNews(number)">     
+				  <div>
+						<img class ="img-responsive"
+							ng-src="https://scontent-sin1-1.xx.fbcdn.net/hphotos-xft1/t31.0-8/11850549_880498282034206_5989827394528523436_o.jpg" alt="..."/>
+					</div>	
+				</a>	
+					<div class="update-title">
+					  image title with {{number}} !!
+					</div>
+					
+			  </div>
+			  
+			  <div> 
+			    <button type="button"  class="btn {{previous}} color5" ng-click="previousButtonClick()"><span aria-hidden="true">&larr;</span> Previous</button>
+			    <button type="button"  class="btn {{next}} color5" ng-click="nextButtonClick()">Next <span aria-hidden="true">&rarr;</span></button>
+			  </div>
+			 </div>
+			 <div ng-show="showLinkContent" style="padding-left: 15px; padding-right: 15px;" >
+			     <h1>News #{{activeNews}} </h1>
+				 <p>స్టార్ హీరోల సినిమాలు మొదలవకముందే రూమర్లు మొదలైపోతాయి. రామ్ చరణ్ కొత్త సినిమా విషయంలో రూమర్లకు కొదవే లేదు. ఈ సినిమా టైటిల్ ఇదే అంటూ ఇప్పటికి చాలా పేర్లు ప్రచారంలోకి వచ్చాయి. అందులో ‘బ్రూస్ లీ’ ఒకటి. సినిమాలో చరణ్ స్టంట్ మాస్టర్ గా కనిపిస్తున్న నేపథ్యంలో ఈ టైటిల్ బాగుంటుందని వైట్ల భావిస్తున్నట్లు ఆ మధ్య వార్తలొచ్చాయి. ఐతే బ్రూస్ లీ అనే టైటిల్ పెడితే ఏదో డబ్బింగ్ సినిమా టైపులో ధ్వనిస్తుందన్న అనుమానాలతో ఆ టైటిల్ ను పక్కనబెట్టేసినట్లు సమాచారం. ప్రస్తుతానికి చరణ్ సినిమాకు ‘ఫైటర్’ అనే టైటిల్ పెడుతున్నట్లు ప్రచారం జరుగుతోంది.</p>
+				 <button type="button" align="right" class="btn color5" ng-click="showOrHideNews()">Back</button>
+			 </div>
+		 </div>
+		 </div>
