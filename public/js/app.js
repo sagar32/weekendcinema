@@ -116,7 +116,6 @@ var myModule = angular.module("myApp",['ngRoute'])
 		    $scope.cinema = name+' details not found';
 			$scope.isLoading =false;
     });
-	   
    }
  	
 })
