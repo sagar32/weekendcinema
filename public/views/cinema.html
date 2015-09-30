@@ -1,3 +1,22 @@
-		  <div>
-				  <h1>{{message}}</h1>
+		  <div class="container">
+				  
+
+				  <div class="jumbotron">
+					<h1>Search Cinema</h1>
+					<div ng-show="!isLoading">
+					<input type="text" placeholder="Search Cinema" ng-model="cinemaName"> 
+					<button type="button" class="btn btn-sm btn-success" ng-show="cinemaName.length>0" ng-click="search(cinemaName)">Search</button>
+					</div>
+					<h3 ng-show="cinemaName.length>0"> You're seraching for {{cinemaName}}</h3>
+					
+					
+					<i class="fa fa-4x fa-spinner fa-spin" ng-show="isLoading"></i>
+					
+					<div ng-show="cinema">
+
+					  <h3>{{cinema}}</h3>
+					</div>
+				</div>
+				  
+	
 		 </div>

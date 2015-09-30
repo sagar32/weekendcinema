@@ -96,9 +96,23 @@ var myModule = angular.module("myApp",['ngRoute'])
   
 })
 
-.controller('cinemaCtrl',function($scope){
+.controller('cinemaCtrl',function($scope,$http){
    
-   $scope.message = 'Cinema page Comming soon!!';
+   $scope.isLoading =false;
+   
+   $scope.search = function(name){
+	   
+	 $scope.isLoading =true;  
+	 $scope.cinema = null;
+	 
+	 $http.get('https://weekendcinemaapi.herokuapp.com/getData/cinema/'+name)
+    .success(function(response) 
+	{
+		$scope.cinema = response ? response : name+' details not found';
+		$scope.isLoading =false;
+	});
+	   
+   }
  	
 })
 .controller('celebrityCtrl',function($scope){
