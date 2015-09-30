@@ -96,7 +96,7 @@ var myModule = angular.module("myApp",['ngRoute'])
   
 })
 
-.controller('cinemaCtrl',function($scope,$http){
+.controller('cinemaCtrl',function($scope,$http,$timeout){
    
    $scope.isLoading =false;
    
@@ -110,7 +110,17 @@ var myModule = angular.module("myApp",['ngRoute'])
 	{
 		$scope.cinema = response ? response : name+' details not found';
 		$scope.isLoading =false;
-	});
+	})
+	.error(function(){
+		$timeout(callAtTimeout, 5000);
+		
+		function callAtTimeout() {
+				$scope.cinema = name+' details not found';
+			$scope.isLoading =false;
+		}
+       		
+
+    });
 	   
    }
  	
