@@ -24,68 +24,30 @@ var myModule = angular.module("myApp",['ngRoute'])
         })
 })
 
-.controller('homeCtrl',function($scope){
+.controller('homeCtrl',function($scope,$http){
    
     $scope.showNewsLinks = true;
 	$scope.showLinkContent = false;
-    
-	$scope.news = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
-	$scope.nitems = 12;
-	$scope.cnews = [];
-	for ( var i =0 ;i< $scope.nitems ;i++ ){
 	
-	   $scope.cnews.push($scope.news[i]);
-	}
-	console.log(  $scope.cnews);
-	$scope.rNewsItems = $scope.news.length-$scope.nitems ;
-	$scope.rNewsItems > 0 ? $scope.next = '': $scope.next = 'disabled';
-	$scope.lNewsItems = 0;
-	$scope.lNewsItems > 0 ? $scope.previous = '': $scope.previous = 'disabled';
-	
-	$scope.showNewsItems = $scope.news.length >0 ? true: false;
-
-	$scope.nextButtonClick = function(){
+	$scope.isLoading =true;
+	$scope.newsItems = [];
 		
+	var date = new Date();
+	var YYYY_MM_DD = date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
 	
-		$scope.lNewsItems = $scope.lNewsItems +$scope.nitems;
-		$scope.rNewsItems = $scope.rNewsItems-$scope.nitems;
-		console.log('r items ..'+$scope.rNewsItems);
-		$scope.rNewsItems > 0 ? $scope.next = '': $scope.next = 'disabled';
-		$scope.lNewsItems > 0 ? $scope.previous = '': $scope.previous = 'disabled';
-		
-			$scope.cnews = [];
+	$http.get('https://weekendcinemaapi.herokuapp.com/v1/events/'+YYYY_MM_DD)
+    .success(function(response) 
+	{
+		$scope.newsItems = response ? response : [];
+		$scope.isLoading =false;
+	})
+	.error(function(){
+	
+		    $scope.newsItems = [];
+			$scope.isLoading =false;
+    });
+	
 
-			if ( $scope.news.length-$scope.lNewsItems >=$scope.nitems  ){
-				
-				for ( var i =0 ;i < $scope.nitems ;i++ ){
-	
-				$scope.cnews.push($scope.news[i+$scope.lNewsItems]);
-			   }
-			}
-			else{
-				var items = $scope.news.length-$scope.lNewsItems;
-				for ( var i =0 ;i < items ;i++ ){
-				$scope.cnews.push($scope.news[i+$scope.lNewsItems]);
-			   }
-			}
-			
-	}
-	
-		$scope.previousButtonClick = function(){
-			
-		$scope.lNewsItems = $scope.lNewsItems-$scope.nitems;
-		$scope.rNewsItems = $scope.rNewsItems+$scope.nitems;
-		$scope.rNewsItems > 0 ? $scope.next = '': $scope.next = 'disabled';
-		$scope.lNewsItems > 0 ? $scope.previous = '': $scope.previous = 'disabled';
-		console.log('r items ..'+$scope.rNewsItems);
-		$scope.cnews = [];
-
-				for ( var i =0 ;i < $scope.nitems ;i++ ){
-	
-				$scope.cnews.push($scope.news[i+$scope.lNewsItems]);
-			   }
-		
-	}
 	
 	$scope.showOrHideNews = function(number){
 		$scope.showNewsLinks = !$scope.showNewsLinks;
@@ -105,7 +67,7 @@ var myModule = angular.module("myApp",['ngRoute'])
 	 $scope.isLoading =true;  
 	 $scope.cinema = null;
 	 
-	 $http.get('https://weekendcinemaapi.herokuapp.com/getData/cinema/'+name)
+	 $http.get('https://weekendcinemaapi.herokuapp.com/v1/cinema/'+name)
     .success(function(response) 
 	{
 		$scope.cinema = response ? response : name+' details not found';
