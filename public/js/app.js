@@ -33,7 +33,7 @@ var myModule = angular.module("myApp",['ngRoute'])
 	$scope.newsItems = [];
 		
 	var date = new Date();
-	var YYYY_MM_DD = date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
+	var YYYY_MM_DD = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
 	
 	$http.get('https://weekendcinemaapi.herokuapp.com/v1/events/'+YYYY_MM_DD)
     .success(function(response) 
