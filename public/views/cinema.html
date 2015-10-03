@@ -7,11 +7,10 @@
 					<input type="text" placeholder="Search Cinema" ng-model="cinemaName"> 
 					<button type="button" class="btn btn-sm btn-success" ng-show="cinemaName.length>0" ng-click="search(cinemaName)">Search</button>
 					</div>
-					<h3 ng-show="cinemaName.length>0&&isLoading">Waiting for the result..</h3>
-					
+					<h3 ng-show="cinemaName.length>0&&isLoading">Waiting for the result..</h3>		
 					
 					<i class="fa fa-4x fa-spinner fa-spin" ng-show="isLoading"></i>
-					
+		
 					<div ng-show="cinema&&!isLoading">
 
 					  <h3>{{cinema}}</h3>
