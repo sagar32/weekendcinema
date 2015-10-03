@@ -31,16 +31,16 @@
 </head>
 
 <body ng-controller="mainCtrl" ng-cloak>
-  <div class="blog-masthead navbar-inverse {{pageData.bgcolor}}">
+  <div class="blog-masthead navbar-inverse {{d.bgcolor}}">
     <div class="container">
       <nav class="blog-nav">
-        <a class="blog-nav-item active-{{pageData.home}}" ng-click="menuItemClick('home')" href="#/">{{pageData.homeTitle}}</a>
-		<a class="blog-nav-item active-{{pageData.cinema}}" ng-click="menuItemClick('cinema')" href="#cinema">{{pageData.cinemaTitle}}</a>
-		<a class="blog-nav-item active-{{pageData.celebrity}}" ng-click="menuItemClick('celebrity')" href="#celebrity">{{pageData.celebrityTitle}}</a>
-		<a class="blog-nav-item active-{{pageData.report}}" ng-click="menuItemClick('report')" href="#report">{{pageData.reportTitle}}</a>
-		<a class="blog-nav-item active-{{pageData.video}}" ng-click="menuItemClick('video')" href="#video">{{pageData.videoTitle}}</a>
-        <a class="blog-nav-item  navbar-right" ng-click="changeLanguage()" href="">{{pageData.languageTitle}} </a>
-        <a class="blog-nav-item  navbar-right">{{pageData.currentDate | date:'fullDate'}} </a>
+        <a class="blog-nav-item active-{{d.home}}" ng-click="menuItemClick('home')" href="#/">{{d.homeTitle}}</a>
+		<a class="blog-nav-item active-{{d.cinema}}" ng-click="menuItemClick('cinema')" href="#cinema">{{d.cinemaTitle}}</a>
+		<a class="blog-nav-item active-{{d.celebrity}}" ng-click="menuItemClick('celebrity')" href="#celebrity">{{d.celebrityTitle}}</a>
+		<a class="blog-nav-item active-{{d.report}}" ng-click="menuItemClick('report')" href="#report">{{d.reportTitle}}</a>
+		<a class="blog-nav-item active-{{d.video}}" ng-click="menuItemClick('video')" href="#video">{{d.videoTitle}}</a>
+        <a class="blog-nav-item  navbar-right" ng-click="changeLanguage()" href="">{{d.languageTitle}} </a>
+        <a class="blog-nav-item  navbar-right">{{d.currentDate | date:'fullDate'}} </a>
       </nav>
 	  </div>
   </div>

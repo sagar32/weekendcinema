@@ -230,9 +230,21 @@ color: #f44336;
    padding: 0px 10px 0px 10px ;
 }
 
+
 .img-responsive{
 	max-height:100px;
 }
+.youtube{
+	height:400px;
+}
+
+ @media (max-width: 768px) {
+  .youtube{
+	height:200px;
+  }
+}
+
+
 
 
     

@@ -32,10 +32,12 @@ var myModule = angular.module("myApp",['ngRoute'])
 	$scope.isLoading =true;
 	$scope.newsItems = [];
 		
+	$scope.youtube_prefix = 'https://www.youtube.com/embed/ZqogpfAqlp8';
+	
 	var date = new Date();
 	var YYYY_MM_DD = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
 	
-	$http.get('https://weekendcinemaapi.herokuapp.com/v1/events/'+YYYY_MM_DD)
+	$http.get('https://weekendcinemaapi.herokuapp.com/v1/events/')
     .success(function(response) 
 	{
 		$scope.newsItems = response ? response : [];
@@ -98,8 +100,8 @@ var myModule = angular.module("myApp",['ngRoute'])
 })
 
 .controller("mainCtrl",function($scope){
-
-	$scope.pageData = {
+    
+	$scope.d = {
 		currentDate : new Date(),
 		homeTitle :'Home',
 		cinemaTitle:'Cinema',
@@ -120,45 +122,61 @@ var myModule = angular.module("myApp",['ngRoute'])
 	$scope.languageTitle = 'తెలుగు';
 	
 	$scope.menuItemClick = function(selectedItem){
-		$scope.pageData.home = false;
-		$scope.pageData.cinema = false;
-		$scope.pageData.report = false;
-		$scope.pageData.celebrity = false;
-		$scope.pageData.video = false;
+		$scope.d.home = false;
+		$scope.d.cinema = false;
+		$scope.d.report = false;
+		$scope.d.celebrity = false;
+		$scope.d.video = false;
 		switch( selectedItem ){
-		  case 'home': $scope.pageData.home = true;break;
-		  case 'cinema': $scope.pageData.cinema = true;break;
-		  case 'report': $scope.pageData.report = true;break;
-		  case 'celebrity' :$scope.pageData.celebrity = true;break;
-		  case 'video':$scope.pageData.video = true;break;
+		  case 'home': $scope.d.home = true;break;
+		  case 'cinema': $scope.d.cinema = true;break;
+		  case 'report': $scope.d.report = true;break;
+		  case 'celebrity' :$scope.d.celebrity = true;break;
+		  case 'video':$scope.d.video = true;break;
 		}
 		
 	}
 
 	$scope.changeLanguage = function(){
 
-		if ( $scope.pageData.languageTitle!='English' ){
+		if ( $scope.d.languageTitle!='English' ){
 			
-			$scope.pageData.languageTitle ='English'; 
-			$scope.pageData.homeTitle = 'హోం';
-			$scope.pageData.cinemaTitle ='సినిమా' ;
-			$scope.pageData.reportTitle = 'సినిమా రిపోర్ట్';
-			$scope.pageData.celebrityTitle = 'సెలబ్రిటీ';
-			$scope.pageData.videoTitle = 'వీడియో';
+			$scope.d.languageTitle ='English'; 
+			$scope.d.homeTitle = 'హోం';
+			$scope.d.cinemaTitle ='సినిమా' ;
+			$scope.d.reportTitle = 'సినిమా రిపోర్ట్';
+			$scope.d.celebrityTitle = 'సెలబ్రిటీ';
+			$scope.d.videoTitle = 'వీడియో';
 		}
 		else{
 			
-			 $scope.pageData.currentDate = new Date(),
-			 $scope.pageData.homeTitle = 'Home',
-			 $scope.pageData.cinemaTitle = 'Cinema',
-			 $scope.pageData.celebrityTitle = 'Celebrity',
-			 $scope.pageData.reportTitle = 'Cinema Report',
-			 $scope.pageData.videoTitle = 'Video';
-			 $scope.pageData.languageTitle = 'తెలుగు',
-			 $scope.pageData.bgcolor = 'bg-color'+parseInt( new Date().getDate()%7),
-			 $scope.pageDatacolor = 'color'+parseInt( new Date().getDate()%7)
+			 $scope.d.currentDate = new Date(),
+			 $scope.d.homeTitle = 'Home',
+			 $scope.d.cinemaTitle = 'Cinema',
+			 $scope.d.celebrityTitle = 'Celebrity',
+			 $scope.d.reportTitle = 'Cinema Report',
+			 $scope.d.videoTitle = 'Video';
+			 $scope.d.languageTitle = 'తెలుగు',
+			 $scope.d.bgcolor = 'bg-color'+parseInt( new Date().getDate()%7),
+			 $scope.d.color = 'color'+parseInt( new Date().getDate()%7)
 		}
 		
 	}
 
+})
+.directive('myYoutube', function($sce) {
+  return {
+    restrict: 'EA',
+    scope: { code:'=' },
+    replace: true,
+    template: '<iframe style="overflow:hidden;height:relative;width:100%" width="100%" height=relative src="{{url}}" frameborder="0" allowfullscreen></iframe>',
+    link: function (scope) {
+        scope.$watch('code', function (newVal) {
+           if (newVal) {
+               scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
+           }
+        });
+    }
+  };
 });
+
