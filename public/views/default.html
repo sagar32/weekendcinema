@@ -18,8 +18,8 @@
 			  </div>
 			  
 			  <div> 
-			    <button type="button"  class="btn  {{pageData.color}}" disabled="{{previous}}" ng-click="previousButtonClick()"><span aria-hidden="true">&larr;</span> Previous</button>
-			    <button type="button"  class="btn  {{pageData.color}}" disabled="{{next}}" ng-click="nextButtonClick()">Next <span aria-hidden="true">&rarr;</span></button>
+			    <button type="button"  class="btn  {{previous}} {{pageData.color}}"  ng-click="previousButtonClick()"><span aria-hidden="true">&larr;</span> Previous</button>
+			    <button type="button"  class="btn  {{next}} {{pageData.color}}"  ng-click="nextButtonClick()">Next <span aria-hidden="true">&rarr;</span></button>
 			  </div>
 			 </div>
 			 <div ng-show="showLinkContent" style="padding-left: 15px; padding-right: 15px;" >
