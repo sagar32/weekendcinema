@@ -166,7 +166,7 @@ var myModule = angular.module("myApp",['ngRoute'])
 })
 .directive('myYoutube', function($sce) {
   return {
-    restrict: 'EA',
+    restrict: 'A',
     scope: { code:'=' },
     replace: true,
     template: '<iframe style="overflow:hidden;height:relative;width:100%" width="100%" height=relative src="{{url}}" frameborder="0" allowfullscreen></iframe>',

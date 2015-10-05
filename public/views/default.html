@@ -2,18 +2,16 @@
 		 <h3>News Today</h3>
 		 <i class="fa fa-4x fa-spinner fa-pulse" ng-show="isLoading"> </i>
 		<div class="row">
-
 		     <div ng-show="showNewsLinks">
-			  <div class="col-md-3 col-xs-6 image-box" ng-repeat="news in newsItems">
+			  <div class="col-md-3 col-xs-6" ng-repeat="news in newsItems">
 			    <a href="" ng-click="showOrHideNews(news)">     
-				  <div>
 						<img class ="img-responsive"
 							ng-src="{{news.imglnk}}" alt="..."/>
-					</div>	
+				<h5 class="{{d.color}}">{{news.ld.ttl}}</h5>
 				</a>	
-					<div class="update-title">
-					  <h5 class="{{d.color}}">{{news.ld.ttl}}</h5>
-					</div>
+					
+			   
+				
 			  </div>
 			  
 			  <div ng-show="showNewsItems"> 
@@ -22,14 +20,16 @@
 			  </div>
 			 </div>
 			 
-		 </div>
-		 <div ng-show="showLinkContent" style="padding-left: 15px; padding-right: 15px;" >
+			 	 <div ng-show="showLinkContent" style="padding-left: 15px; padding-right: 15px;" >
 			     <h3>{{activeNews.ld.ttl}} </h3> 
 				  <div my-youtube class="media" code="activeNews.mO[0]" ng-show="(activeNews.type == 'TE') || (activeNews.type =='VR')"></div>
 				  <image  class="media" ng-src="{{activeNews.imglnk}}" ng-show="activeNews.type == 'PO'"/> 
 				  
-				  <h4>{{activeNews.ld.msg}}</h4>
+				  <p>{{activeNews.ld.msg}}</p>
 					
-				 <button type="button" align="right" class="btn {{d.color}}" ng-click="showOrHideNews()">Back</button>
+				 <button type="button" style="color:#fff;" class="btn  {{d.bgcolor}}" ng-click="showOrHideNews()">Back</button>
 			 </div>
+			 
+		 </div>
+	
 		 </div>
