@@ -6,7 +6,6 @@
         angular.module("myApp").controller('homeCtrl', ['$scope', '$http', HomeCtrl]);
         angular.module("myApp").controller('cinemaCtrl', ['$scope', '$http', CinemaCtrl]);
         angular.module("myApp").controller('celebrityCtrl', ['$scope', CelebrityCtrl]);
-        angular.module("myApp").controller('videoCtrl', ['$scope', VideoCtrl]);
         angular.module("myApp").controller('reportCtrl', ['$scope', ReportCtrl]);
         angular.module("myApp").controller('mainCtrl', ['$scope', MainCtrl]);
 
@@ -30,10 +29,6 @@
                 .when('/report', {
                     templateUrl: 'report.html',
                     controller: 'reportCtrl'
-                })
-                .when('/video', {
-                    templateUrl: 'video.html',
-                    controller: 'videoCtrl'
                 })
         })
 
@@ -166,20 +161,25 @@
 			
         $scope.isLoading = false;
         $scope.cinema = false;
+		$scope.found = false;
         $scope.search = function(name) {
             $scope.isLoading = true;
+			$scope.found = false;
+			$scope.cinema = null;
             $http.get('https://weekendcinemaapi.herokuapp.com/v1/cinema/' + name)
                 .success(function(response) {
                     $scope.cinema = response || null;
                     $scope.isLoading = false;
+					$scope.found = response == null ? true:false;
                 })
                 .error(function() {
                     $scope.cinema = null;
                     $scope.isLoading = false;
+					$scope.found = true; 
                 });
         }
 		$scope.change = function(){
-			$scope.cinema = "";
+			$scope.found = false 
 		}
 
     }
@@ -193,12 +193,6 @@
     function ReportCtrl($scope) {
 
         $scope.message = 'Report page Comming soon!!';
-
-    }
-
-    function VideoCtrl($scope) {
-
-        $scope.message = 'Videos page Comming soon!!';
 
     }
 

@@ -1,5 +1,5 @@
 <div class="container">	
- <h4>News Today</h4>
+ 
 </div>
  
 <div class="container">	
@@ -15,7 +15,7 @@
 		<div ng-show="showLinkContent">
 			     <h3>{{activeNews.ld.ttl}} </h3> 
 				  <div my-youtube class="media" code="activeNews.mO[0]" ng-show="(activeNews.type == 'TE') || (activeNews.type =='VR')"></div>
-				  <image  class="media" ng-src="{{activeNews.imglnk}}" ng-show="activeNews.type == 'PO'"/> 
+				  <image  class="media" ng-src="{{activeNews.imglnk}}" ng-show="activeNews.type == 'NS'"/> 
 				  
 				  <p>{{activeNews.ld.msg}}</p>
 					

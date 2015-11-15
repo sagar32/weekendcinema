@@ -12,7 +12,7 @@
             </div> <!-- /input-group -->
          </div><!-- /.col-lg-6 -->
          <div class="col-md-6">
-                <div ng-show="cinema == null">
+                <div ng-show="found">
                     <h3 class="text-danger"> Ooops! {{cinemaName}} not found ....</h3>
                 </div>
          </div><!-- /.col-lg-6 -->
@@ -20,11 +20,24 @@
  </div>
 <div ng-show="cinema&&!isLoading">
  <div class="container">
-	 <div>
-	   <img style="overflow:hidden;height:275px;width:100%" ng-src="{{cinema.posterUrl}}"/>
-	   <h2>{{cinema.name}}</h2>
-	 </div>
+   <div>
+    <div class="col-md-6 cinema-poster">
+	  <img style="overflow:hidden;height:275px;width:100%" ng-src="{{cinema.general.posterUrl}}"/>
 	</div>
+	<div class="col-md-6">
+	   <h3>{{cinema.en.name}}</h3>
+	   <ul class="ul-inline">
+		<h5>
+	     <li><i class="fa fa-certificate"></i> Certificate:{{cinema.general.certificate}}|<li/>
+		 <li><i class="fa fa-calendar"></i> Release Date:{{cinema.general.releaseDate}}|<li/>
+		 <li><i class="fa fa-clock-o"></i> Duration:{{cinema.general.duration}} min<li/>
+		</h5> 
+	   </ul>
+	   <h3>Story</h3>
+	   <p>{{cinema.en.story}}</p>
+	</div>
+   </div>
+</div>
  <div class="container">
 	    <ul id="myTab" class="nav nav-tabs">
            <li class="active"><a href="cinema/#basicInformation" data-toggle="tab">Basic information </a></li>
@@ -37,75 +50,59 @@
    </ul>
   <div id="myTabContent" class="tab-content">
    <div class="tab-pane fade in active" id="basicInformation">
-      <div class="bs-callout bs-callout-info">
+     
 	   <h4>Basic information</h4>
 	   <ul>
-	     <li>Story</li>
-		 <li>Certification</li>
+	     <li>Story: {{cinema.en.story}}</li>
 	   </ul>
-	  </div>
+	 
 	</div>  
    <div class="tab-pane fade in " id="CastandCrew">
-    <div class="bs-callout bs-callout-info">
+	 
 	   <h4>Starring</h4>
-	   <ul>
-	     <li>Hero</li>
-		 <li>Hhhk</li>
+	   <ul class="ul-inline">
+	     <li ng-repeat="star in cinema.en.casting.starring">{{star}} </li>
 	   </ul>
-	  </div>
-	 <div class="bs-callout bs-callout-danger">
-	   <h4>Starring</h4>
-	   <ul>
-	     <li>Hero</li>
-		 <li>Hhhk</li>
-	   </ul>
-	  </div>
+	  
    </div>
    <div class="tab-pane fade in " id="Songs">
    <div class="row">
- 
+      <div class="col-md-6 col-sm-6">
+     <div my-youtube  class="media" code="cinema.en.songs.url" ></div>
+   </div>
    <div class="col-md-6 col-sm-6">
       <div class="tab-pane fade in " id="songs">{{songs.list}}
       <ul id="songsTab" class="breadcrumb" >
-		   <li ng-repeat="song in movie.songs.list"><a href="#{{song.name}}" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>{{song.name}}</a></li>
+		   <li ng-repeat="song in cinema.en.songs.list"><a href="cinema/#Songs/#{{song.name}}" data-toggle="tab"><i class="fa fa-headphones"></i>{{song.name}}</a></li>
       </ul>
 	  <div id="songTabContent" class="tab-content">
-	    <div class="tab-pane fade in " id="{{songTab.name}}" ng-repeat="songTab in movie.songs.list">
-		 Music Director : {{songTab.musicDirector}} Lyrics: {{songTab.lyricist}} Singer(s): {{songTab.singers}}
-    		 <div class="tab-pane fade in " id="lyrics">
-               <ul id="songsTab" class="breadcrumb" >
-		        <li><a href="#pallavi" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Pallavi</a></li>
-                <li><a href="#charanamOne" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Charanam One</a></li>
-                <li><a href="#charanamTwo" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Charanam Two</a></li>            
-			  </ul>
-	        <div id="songTabContent" class="tab-content">
-	          <div class="tab-pane fade in " id="pallavi">
-			   {{songTab.lyric.pallavi}}
-	         </div>
-			 <div class="tab-pane fade in " id="charanamOne">
-			   {{songTab.lyric.charanamOne}}
-	         </div>
-			 <div class="tab-pane fade in " id="charanamTwo">
-			   {{songTab.lyric.charanamTwo}}
-	         </div>
-	       </div>
-           </div>   		   
+	    <div class="tab-pane fade in " id="{{songTab.name}}" ng-repeat="songTab in cinema.en.songs.list">
+		 Lyrics: {{songTab.lyrics}} Singer(s): {{songTab.singer}} 		   
 	    </div>
 	  </div>
       </div>
    </div>
-     <div class="col-md-6 col-sm-6">
-     <iframe style="overflow:hidden;height:relative;width:100%" src="https://www.youtube.com/embed/ZYjpZFR_CYM" frameborder="0" allowfullscreen></iframe>
-   </div>
    </div><!--row-->
    </div>
    <div class="tab-pane fade in " id="News">
+     Comming Soon
    </div>
    <div class="tab-pane fade in " id="Pictures">
+	 <div class="row">
+			  <div class="col-md-3 col-xs-6 " ng-repeat="photo in cinema.general.photos">  
+					<img class ="img-view" ng-src="{{photo}}" alt="..."/>
+			  </div>
+	</div> 
    </div>
    <div class="tab-pane fade in " id="Trailers">
+	 	 <div class="row">
+			  <div class="col-md-6 col-xs-6" ng-repeat="teaser in cinema.en.teasers">  
+					<div my-youtube class="media" code="teaser"></div>
+			  </div>
+	</div> 
    </div>
    <div class="tab-pane fade in " id="UserReviews">
+     Comming Soon
    </div>
  </div>
  </div> <!-- /container -->

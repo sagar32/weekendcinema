@@ -14,7 +14,8 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333;
@@ -286,6 +287,29 @@ a,a:hover {text-decoration:none;}
 	width:100%
 }
 
+.img-view{
+	overflow:hidden;
+	height: 150px;
+	width:100%
+}
+ul{
+ padding-left: 0px;
+}
+.ul-inline{
+	margin-bottom: 5px;
+	margin-top:5px;
+}
+.ul-inline li {
+	display: inline;
+   
+}
+.cinema-poster{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+p {
+    margin: 0 0 0px;
+}
  @media (max-width: 768px) {
   .img-responsive {
 	height: 50px;
@@ -294,7 +318,8 @@ a,a:hover {text-decoration:none;}
 }
 
 .media{
-	height:400px;
+	height:350px;
+	width:100%;
 }
 
  @media (max-width: 768px) {
