@@ -1,26 +1,18 @@
-		<div class="container" style="padding-top=5px;">
-		 <h3>News Today</h3>
-		 <i class="fa fa-4x fa-spinner fa-pulse" ng-show="isLoading"> </i>
+<div class="container">	
+ <h4>News Today</h4>
+</div>
+ 
+<div class="container">	
+<i class="fa fa-4x fa-spinner fa-pulse" ng-show="isLoading"> </i>		 	 
 		<div class="row">
-		     <div ng-show="showNewsLinks">
-			  <div class="col-md-3 col-xs-6" ng-repeat="news in newsItems">
+			  <div class="col-md-3 col-xs-6" ng-repeat="news in newsItems" ng-show="showNewsLinks">
 			    <a href="" ng-click="showOrHideNews(news)">     
-						<img class ="img-responsive"
-							ng-src="{{news.imglnk}}" alt="..."/>
-				<h5 class="{{d.color}}">{{news.ld.ttl}}</h5>
+					<img class ="img-responsive" ng-src="{{news.imglnk}}" alt="..."/>
+					{{news.ld.ttl}}
 				</a>	
-					
-			   
-				
 			  </div>
-			  
-			  <div ng-show="showNewsItems"> 
-			    <button type="button"  class="btn  {{previous}} {{d.color}}"  ng-click="previousButtonClick()"><span aria-hidden="true">&larr;</span> Previous</button>
-			    <button type="button"  class="btn  {{next}} {{d.color}}"  ng-click="nextButtonClick()">Next <span aria-hidden="true">&rarr;</span></button>
-			  </div>
-			 </div>
-			 
-			 	 <div ng-show="showLinkContent" style="padding-left: 15px; padding-right: 15px;" >
+		</div>  
+		<div ng-show="showLinkContent">
 			     <h3>{{activeNews.ld.ttl}} </h3> 
 				  <div my-youtube class="media" code="activeNews.mO[0]" ng-show="(activeNews.type == 'TE') || (activeNews.type =='VR')"></div>
 				  <image  class="media" ng-src="{{activeNews.imglnk}}" ng-show="activeNews.type == 'PO'"/> 
@@ -28,8 +20,5 @@
 				  <p>{{activeNews.ld.msg}}</p>
 					
 				 <button type="button" style="color:#fff;" class="btn  {{d.bgcolor}}" ng-click="showOrHideNews()">Back</button>
-			 </div>
-			 
-		 </div>
-	
-		 </div>
+		</div>
+</div>

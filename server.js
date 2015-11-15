@@ -2,7 +2,7 @@ var express = require('express')
   , app = express() // Web framework to handle routing requests
   , routes = require('./routes')// Routes for our application
 
-  var path    = require("path");
+var path    = require("path");
   
 var port = process.env.PORT || 3000;
 

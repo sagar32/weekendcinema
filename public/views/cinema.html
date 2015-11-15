@@ -1,21 +1,112 @@
-		  <div class="container">
-				  
-
-				  <div class="jumbotron">
-					<h1>Search Cinema</h1>
-					<div ng-show="!isLoading">
-					<input type="text" placeholder="Search Cinema" ng-model="cinemaName"> 
-					<button type="button" style="color:#fff;" class="btn  {{d.bgcolor}}" ng-show="cinemaName.length>0" ng-click="search(cinemaName)">Search</button>
-					</div>
-					<h3 ng-show="cinemaName.length>0&&isLoading">Waiting for the result..</h3>		
-					
-					<i class="fa fa-4x fa-spinner fa-pulse" ng-show="isLoading"></i>
-		
-					<div ng-show="cinema&&!isLoading">
-
-					  <h3>{{cinema}}</h3>
-					</div>
-				</div>
-				  
-	
-		 </div>
+<div class="container" ng-show="isLoading">
+<i class="fa fa-4x fa-spinner fa-pulse" ></i>
+</div>
+ <div ng-show="!isLoading" class="container">
+   <div class="row">
+        <div class="col-md-6">
+           <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for Cinema ..." ng-model="cinemaName" ng-change="change()">
+                    <span class="input-group-btn">
+					  <button class="btn {{d.bgcolor}}" style="color:#fff;" type="button" ng-show="cinemaName.length>0" ng-click="search(cinemaName)">Search</button>
+                    </span>
+            </div> <!-- /input-group -->
+         </div><!-- /.col-lg-6 -->
+         <div class="col-md-6">
+                <div ng-show="cinema == null">
+                    <h3 class="text-danger"> Ooops! {{cinemaName}} not found ....</h3>
+                </div>
+         </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+ </div>
+<div ng-show="cinema&&!isLoading">
+ <div class="container">
+	 <div>
+	   <img style="overflow:hidden;height:275px;width:100%" ng-src="{{cinema.posterUrl}}"/>
+	   <h2>{{cinema.name}}</h2>
+	 </div>
+	</div>
+ <div class="container">
+	    <ul id="myTab" class="nav nav-tabs">
+           <li class="active"><a href="cinema/#basicInformation" data-toggle="tab">Basic information </a></li>
+           <li><a href="cinema/#CastandCrew" data-toggle="tab"><i class="fa fa-users"></i> Cast & Crew</a></li>
+		   <li><a href="cinema/#Trailers" data-toggle="tab"><i class="fa fa-youtube-play"></i> Trailers</a></li>
+           <li><a href="cinema/#Songs" data-toggle="tab"><i class="fa fa-headphones"></i> Songs</a></li>
+		   <li><a href="cinema/#News" data-toggle="tab"><i class="fa fa-newspaper-o"></i> News</a></li>
+		   <li><a href="cinema/#Pictures" data-toggle="tab"><i class="fa fa-picture-o"></i> Pictures</a></li>
+		   <li><a href="cinema/#UserReviews" data-toggle="tab"><i class="fa fa-commenting"></i> User Reviews</a></li>
+   </ul>
+  <div id="myTabContent" class="tab-content">
+   <div class="tab-pane fade in active" id="basicInformation">
+      <div class="bs-callout bs-callout-info">
+	   <h4>Basic information</h4>
+	   <ul>
+	     <li>Story</li>
+		 <li>Certification</li>
+	   </ul>
+	  </div>
+	</div>  
+   <div class="tab-pane fade in " id="CastandCrew">
+    <div class="bs-callout bs-callout-info">
+	   <h4>Starring</h4>
+	   <ul>
+	     <li>Hero</li>
+		 <li>Hhhk</li>
+	   </ul>
+	  </div>
+	 <div class="bs-callout bs-callout-danger">
+	   <h4>Starring</h4>
+	   <ul>
+	     <li>Hero</li>
+		 <li>Hhhk</li>
+	   </ul>
+	  </div>
+   </div>
+   <div class="tab-pane fade in " id="Songs">
+   <div class="row">
+ 
+   <div class="col-md-6 col-sm-6">
+      <div class="tab-pane fade in " id="songs">{{songs.list}}
+      <ul id="songsTab" class="breadcrumb" >
+		   <li ng-repeat="song in movie.songs.list"><a href="#{{song.name}}" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>{{song.name}}</a></li>
+      </ul>
+	  <div id="songTabContent" class="tab-content">
+	    <div class="tab-pane fade in " id="{{songTab.name}}" ng-repeat="songTab in movie.songs.list">
+		 Music Director : {{songTab.musicDirector}} Lyrics: {{songTab.lyricist}} Singer(s): {{songTab.singers}}
+    		 <div class="tab-pane fade in " id="lyrics">
+               <ul id="songsTab" class="breadcrumb" >
+		        <li><a href="#pallavi" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Pallavi</a></li>
+                <li><a href="#charanamOne" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Charanam One</a></li>
+                <li><a href="#charanamTwo" data-toggle="tab"><span class="glyphicon glyphicon-music"></span>Charanam Two</a></li>            
+			  </ul>
+	        <div id="songTabContent" class="tab-content">
+	          <div class="tab-pane fade in " id="pallavi">
+			   {{songTab.lyric.pallavi}}
+	         </div>
+			 <div class="tab-pane fade in " id="charanamOne">
+			   {{songTab.lyric.charanamOne}}
+	         </div>
+			 <div class="tab-pane fade in " id="charanamTwo">
+			   {{songTab.lyric.charanamTwo}}
+	         </div>
+	       </div>
+           </div>   		   
+	    </div>
+	  </div>
+      </div>
+   </div>
+     <div class="col-md-6 col-sm-6">
+     <iframe style="overflow:hidden;height:relative;width:100%" src="https://www.youtube.com/embed/ZYjpZFR_CYM" frameborder="0" allowfullscreen></iframe>
+   </div>
+   </div><!--row-->
+   </div>
+   <div class="tab-pane fade in " id="News">
+   </div>
+   <div class="tab-pane fade in " id="Pictures">
+   </div>
+   <div class="tab-pane fade in " id="Trailers">
+   </div>
+   <div class="tab-pane fade in " id="UserReviews">
+   </div>
+ </div>
+ </div> <!-- /container -->
+</div> 
