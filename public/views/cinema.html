@@ -28,13 +28,13 @@
 	   <h3>{{cinema.en.name}}</h3>
 	   <ul class="ul-inline">
 		<h5>
-	     <li><i class="fa fa-certificate"></i> Certificate:{{cinema.general.certificate}}|<li/>
-		 <li><i class="fa fa-calendar"></i> Release Date:{{cinema.general.releaseDate}}|<li/>
-		 <li><i class="fa fa-clock-o"></i> Duration:{{cinema.general.duration}} min<li/>
+	     <li><i class="fa fa-certificate"></i> Certificate:{{cinema.general.certificate||'Not Avaialable'}}|<li/>
+		 <li><i class="fa fa-calendar"></i> Release Date:{{cinema.general.releaseDate||'Not Avaialable'}}|<li/>
+		 <li><i class="fa fa-clock-o"></i> Duration:{{cinema.general.duration||'Not Avaialable'}}<li/>
 		</h5> 
 	   </ul>
 	   <h3>Story</h3>
-	   <p>{{cinema.en.story}}</p>
+	   <p>{{cinema.en.story||'Cinema yet to be released'}}</p>
 	</div>
    </div>
 </div>
@@ -52,9 +52,8 @@
    <div class="tab-pane fade in active" id="basicInformation">
      
 	   <h4>Basic information</h4>
-	   <ul>
-	     <li>Story: {{cinema.en.story}}</li>
-	   </ul>
+
+	     <h3>Story: {{cinema.en.story||'Cinema yet to be released'}}</h3>
 	 
 	</div>  
    <div class="tab-pane fade in " id="CastandCrew">
@@ -67,10 +66,10 @@
    </div>
    <div class="tab-pane fade in " id="Songs">
    <div class="row">
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-6 col-sm-6" ng-show="cinema.en.songs.url">
      <div my-youtube  class="media" code="cinema.en.songs.url" ></div>
    </div>
-   <div class="col-md-6 col-sm-6">
+   <div class="col-md-6 col-sm-6" ng-show="cinema.en.songs.list.length>0">
       <div class="tab-pane fade in " id="songs">{{songs.list}}
       <ul id="songsTab" class="breadcrumb" >
 		   <li ng-repeat="song in cinema.en.songs.list"><a href="cinema/#Songs/#{{song.name}}" data-toggle="tab"><i class="fa fa-headphones"></i>{{song.name}}</a></li>
@@ -83,6 +82,9 @@
       </div>
    </div>
    </div><!--row-->
+   <div ng-show="cinema.en.songs.date">
+    Songs will be avaiable on {{cinema.en.songs.date}}
+   </div>
    </div>
    <div class="tab-pane fade in " id="News">
      Comming Soon
