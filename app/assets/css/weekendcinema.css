@@ -1,0 +1,160 @@
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: 'Roboto','Roboto+Slab' ;
+  background-color:#e9eaed ;
+}
+
+
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+	padding-left:0px;
+}
+.bg-color-CCC{
+ background-color: #8d38c9;
+}
+.bg-color-DDD{
+ background-color: #3f51b5;
+}
+.bg-color-TEASER{
+ background-color: #2196f3;	
+}
+.bg-color-TRAILER{
+ background-color: #4caf50;	
+}
+.bg-color-BBB{
+ background-color: #00bcd4;	
+}
+.bg-color-NEWS{
+ background-color: #ff9800;	
+}
+.bg-color-XXX{
+ background-color: #f44336;	
+}
+
+.bg-color-darkorchid{
+ background-color: #8d38c9;
+}
+.bg-color-darkslateblue{
+ background-color: #3f51b5;
+}
+.bg-color-dodgerblue{
+ background-color: #2196f3;	
+}
+.bg-color-mediumseagreen{
+ background-color: #4caf50;	
+}
+.bg-color-darkturquoise{
+ background-color: #00bcd4;	
+}
+.bg-color-darkorange{
+ background-color: #ff9800;	
+}
+.bg-color-tomato{
+ background-color: #f44336;	
+}
+
+
+.color-darkorchid {
+color: #8d38c9;
+}
+.color-darkslateblue {
+color: #3f51b5;
+}
+.color-dodgerblue {
+color: #2196f3;	
+}
+.color-mediumseagreen {
+color: #4caf50;	
+}
+.color-darkturquoise {
+color: #00bcd4;	
+}
+.color-darkorange {
+color: #ff9800;	
+}
+.color-tomato{
+color: #f44336;	
+}
+.color-cornflowerblue {
+color: #448aff;	
+}
+
+.not-found{
+	height: 550px;
+    background-color: #04020F;
+}
+.not-found h3{
+    margin-top: 150px;
+    margin-bottom: 250px;
+    border-left-width: 50px;
+    margin-left: 50px;
+	color:#fff;
+}
+ @media (max-width: 768px) {
+  .not-found{
+	height: 100px;
+  }
+  .not-found h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left-width: 0px;
+    margin-left: 0px;
+	color:#fff;
+}
+}
+
+.template  .container{
+	padding-right: 15px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+	background-color: #fff;
+	
+}
+
+.img-article{
+	overflow:hidden;
+	height: 120px;
+	width:100%;
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    width: 100px;
+	margin-left: 5px;
+    top: 5px;
+    color: #fff;
+	text-align:center;
+}
+
+.ul-inline{
+	margin-bottom: 5px;
+	margin-top:5px;	
+    padding-left: 0px;
+}
+.ul-inline li {
+	display: inline;
+}
+
+ @media (max-width: 768px) {
+  .img-responsive {
+	height: 50px;
+	width:100%
+  }
+}
+
+.media{
+	height:350px;
+	width:100%;
+	margin-top:5px;
+}
+
+ @media (max-width: 768px) {
+  .media{
+	height:200px;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="container">  
+  <div class="row" ng-show="found">
+	<div class="col-md-12">
+	
+	   <ul class="ul-inline">
+             <li class="color-cornflowerblue"> <h3>{{article.ld.ttl}}</h3></li>
+			 <li>{{article.orgDT | date:'fullDate'}}</li>
+       </ul>
+	   
+	</div>	
+        <div class="col-md-8">
+            
+            <div my-youtube class="media" code="article.mO[0]" ng-show="(article.type == 'TE') || (article.type =='TRAILER')"></div>
+            <image class="media" ng-src="{{article.imglnk}}" ng-show="article.type == 'NEWS'" />
+        </div>
+        <div class="col-md-4">
+            <p>{{article.ld.msg}}</p>
+        </div>
+ </div>
+ <div class="row not-found" ng-show="!found">
+  <div>
+   <h3> The page you're looking is not found!!! </h3>
+ </div>
+</div> 
+</div>

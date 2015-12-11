@@ -1,18 +1,19 @@
 var express = require('express')
-  , app = express() // Web framework to handle routing requests
-  , routes = require('./routes')// Routes for our application
+  , app = express(); // Web framework to handle routing requests
 
-var path    = require("path");
+
   
 var port = process.env.PORT || 3000;
 
 
-app.set("view options", {layout: false});
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/views'));
+app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/app/partials'));
 	
-// Application routes
-routes(app);
+app.get("*", function(req,res,next){
+
+	res.sendFile(__dirname+'/index.html');
+
+ });
 
 app.listen(port);
 console.log('Weekend Cinema UI server listening on '+port);

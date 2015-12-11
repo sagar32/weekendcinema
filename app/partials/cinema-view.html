@@ -1,0 +1,128 @@
+<div class="container" ng-show="isLoading">
+    <i class="fa fa-4x fa-spinner fa-pulse"> </i>
+</div>
+<div ng-show="cinema&&!isLoading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 cinema-poster">
+                <uib-carousel interval="myInterval">
+                    <uib-slide ng-repeat="image in cinema.general.photos">
+                        <img style="overflow:hidden;height:275px;width:100%" ng-src="{{image}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+            </div>
+            <div class="col-md-6">
+                <h4 class="color-cornflowerblue"> {{cinema.en.name}}</h4>
+                <ul class="ul-inline">
+                    <li><i class="fa fa-certificate"></i> Certificate:{{cinema.general.certificate||'N/A'}}<li/>
+                    <li><i class="fa fa-calendar"></i> Release Date:{{cinema.general.releaseDate||'N/A'}}<li/>
+                    <li><i class="fa fa-clock-o"></i> Duration:{{cinema.general.duration||'N/A'}}<li/>
+                </ul>
+                <h4 class="color-cornflowerblue"> Story</h4>
+                <p>{{cinema.en.story||'Cinema yet to be released'}}</p>
+            </div>
+        </div>
+
+        <div>
+            <uib-tabset>
+                <uib-tab>
+                    <uib-tab-heading>
+                        Basic information
+                    </uib-tab-heading>
+                    <h4 class="color-cornflowerblue">Story:</h4>
+					<p> {{cinema.en.story ||'Cinema yet to be released'}}</p>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-users"></i> Cast & Crew
+                    </uib-tab-heading>
+                    <h4 class="color-cornflowerblue">Starring:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.starring">{{person}} </li>
+                    </ul>
+					
+					<h4 class="color-cornflowerblue">Director[s]:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.director">{{person}} </li>
+                    </ul>
+					<h4 class="color-cornflowerblue">Story writer[s]:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.storywriters">{{person}} </li>
+                    </ul>
+					<h4 class="color-cornflowerblue">Screenplay:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.screenplay">{{person}} </li>
+                    </ul>
+					<h4 class="color-cornflowerblue">Edotor[s]:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.editors">{{person}} </li>
+                    </ul>
+					<h4 class="color-cornflowerblue">Producers[s]:</h4>
+                    <ul class="ul-inline">
+                        <li ng-repeat="person in cinema.en.casting.producers">{{person}} </li>
+                    </ul>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-youtube-play"></i> Videos
+                    </uib-tab-heading>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6" ng-repeat="teaser in cinema.en.teasers">
+                            <div my-youtube class="media" code="teaser"></div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-headphones"></i> Songs
+                    </uib-tab-heading>
+					<div ng-show="!cinema.en.songs.url">
+						  songs will be released soon
+					</div>
+                    <div class="row">
+					<div class="col-md-6 col-sm-6" ng-show="cinema.en.songs.list">
+                             <ul class="ul-inline" ng-repeat="song in cinema.en.songs.list">
+							   <h4 class="color-darkorange">{{song.name}}:</h4>
+                                <div class="color-dodgerblue">Singers :</div><li ng-repeat="singer in  song.singer">{{singer}} </li>
+								<div class="color-darkslateblue">Lyricist :</div><li ng-repeat="lyricist in  song.lyricist">{{lyricist}} </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-sm-6" ng-show="cinema.en.songs.url">
+                            <div my-youtube class="media" code="cinema.en.songs.url"></div>
+                        </div>
+						
+                    </div>
+                    <!--row-->
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-newspaper-o"></i> New
+                    </uib-tab-heading>
+                    coming soon
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-picture-o"></i> Pictures
+                    </uib-tab-heading>
+                    coming soon
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        <i class="fa fa-commenting"></i> User Reviews
+                    </uib-tab-heading>
+                    coming soon
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+
+<div ng-show="!cinema&&!isLoading">
+    <div class="container">
+	 <div class="row not-found">
+  <div>
+   <h3> The page you're looking is not found!!! </h3>
+ </div>
+</div> 
+</div>
+</div>

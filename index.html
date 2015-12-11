@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-init="projectName='Weekend Cinema'">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./">
+
+    <title>weekend cinema !! Telugu Cinema Portal</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;lang=en" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:300,400,500&amp;lang=en" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/css/weekendcinema.css">
+    <style>
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-controller="mainCtrl" ng-cloak>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">weekend cinema</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form">
+                    <div class="form-group">
+                        <input type="text" ng-model="cinema" uib-typeahead="cinema.name for cinema in cinemaList | filter:$viewValue | limitTo:12" class="form-control" placeholder="Search for Cinema or Celebrity" />
+                    </div>
+                    <button class="btn btn-success" type="button" ng-click="search(cinema)">Search</button>
+                </form>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+
+    <div class="template" ng-view>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- Latest compiled and minified JavaScript -->
+    
+    <script src="assets/js/lib/angular.min-1.4.7.js"></script>
+    <script src="assets/js/lib/angular-route.min-1.4.7.js"></script>
+    <script src="assets/js/lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script src="directives.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-xs-6">
+            <h4>Articles</h4>
+            <i class="fa fa-4x fa-spinner fa-pulse" ng-show="isLoading"> </i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-xs-6" ng-repeat="news in newsItems">
+            <a href="" ng-click="showArticle(news)">
+                <div>
+                    <img class="img-article img-thumbnail" ng-src="{{news.imglnk}}" alt="..." />
+                    <div class="caption bg-color-{{news.type}}">{{news.type}}</div>
+                </div>
+                {{news.ld.ttl}}
+            </a>
+        </div>
+    </div>
+</div>
